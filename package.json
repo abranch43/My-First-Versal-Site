@@ -1,0 +1,17 @@
+{
+  "name": "my-first-versal-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple starter site for Azure App Service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo \"No build step needed\""
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
