@@ -1,0 +1,40 @@
+name: Public Safety Checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Reject common secret and private-path patterns
+        shell: bash
+        run: |
+          set -euo pipefail
+          patterns='(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9_-]{20,}|C:\\Users\\|/Users/[^/]+/|password[[:space:]]*[:=][[:space:]]*[^<][^ ]+)'
+          if grep -RInE --exclude-dir=.git --exclude='*.lock' --exclude='public-safety.yml' "$patterns" .; then
+            echo 'Potential secret or private-path pattern detected. Review and sanitize before merge.'
+            exit 1
+          fi
+
+      - name: Require demo labels for files under demos
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -d demos ]; then
+            while IFS= read -r -d '' file; do
+              if ! grep -Eq '\[(DEMO|SAMPLE|SYNTHETIC|CONCEPT)\]' "$file"; then
+                echo "Missing public-demo label: $file"
+                exit 1
+              fi
+            done < <(find demos -type f -print0)
+          fi
