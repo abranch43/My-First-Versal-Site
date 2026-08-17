@@ -1,84 +1,60 @@
 # BranchBot Agent Lab
 
-**A+ Enterprise LLC** — Veteran-owned. Agentic-powered. Built for lasting legacy.
+Public-safe proof of controlled agentic workflows by **Antonio Branch**, Founder & CEO of **A+ Enterprise LLC**.
 
----
+**Authority stack:** Antonio Branch → A+ Enterprise LLC → Cybersecurity / GRC → BranchOS / Agentic Systems
 
-## 1. What This Repo Is
+## Public Proof Path
 
-This is a **public demo workspace** for experimenting with GitHub Copilot agents, automation patterns, and agentic workflows maintained by Antonio Branch / A+ Enterprise LLC.
+1. [Antonio Branch on GitHub](https://github.com/abranch43) — founder identity and public repositories.
+2. [A+ Enterprise LLC](https://aplus-enterprise.com) — official commercial front door.
+3. [Cybersecurity / GRC Portfolio](https://github.com/abranch43/antonio-branch-cyber-portfolio) — public technical and GRC proof layer.
+4. [BranchBot Agent Lab](https://github.com/abranch43/branchbot-agent-lab) — controlled agentic-workflow proof.
+5. [BranchOS Public Definition](https://github.com/abranch43/antonio-branch-cyber-portfolio/blob/main/BRANCHOS.md) — authoritative public definition and operating boundary.
 
-It serves as a sandbox for:
+## What This Repository Proves
 
-- Testing GitHub Copilot agent behaviors and prompt engineering
-- Prototyping automation patterns that are safe to share publicly
-- Demonstrating agentic workflows without exposing proprietary infrastructure
-- Hosting sanitized examples and starter templates
+This repository demonstrates how agent-assisted work can be decomposed, constrained, reviewed, and checked before acceptance. It contains sanitized public artifacts only; it is not a production system, certification claim, client implementation, or disclosure of proprietary BranchOS internals.
 
-The repo also contains a simple Node.js/Express starter site originally deployed to Azure App Service, used as a live deployment target for agent-driven CI/CD experiments.
+## Completed Public Proof
 
----
+| Proof | Problem | Agentic Workflow | Human Authorization Gate | Safe Output | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| Controlled task execution | Open-ended agent tasks can expand scope or produce unreviewable changes. | Reusable prompts specify the target path, acceptance criteria, prohibited data, and pull-request output. Repository instructions constrain scope and dependencies. | Agent work must arrive through a pull request; agents may not approve or merge their own changes. | Focused documentation or code changes using synthetic, public-safe material. | [Prompt patterns](docs/COPILOT_AGENT_PROMPTS.md), [repository instructions](.github/copilot-instructions.md), and [merged PR #1](https://github.com/abranch43/branchbot-agent-lab/pull/1) |
+| CI safety control | Public repositories can accidentally receive credentials, private paths, or unlabeled sample material. | A read-only GitHub Action scans every pull request and push to `main`, verifies demo labeling, and runs the repository tests. | A failed check blocks acceptance until a human reviews and sanitizes the change. | A reproducible pass/fail record without publishing the suspected sensitive value as an artifact. | [Public Safety Checks](.github/workflows/public-safety.yml), [Actions history](https://github.com/abranch43/branchbot-agent-lab/actions), and [merged PR #2](https://github.com/abranch43/branchbot-agent-lab/pull/2) |
+| No autonomous external action | Agent output can create business, security, or reputational risk when it acts outside the repository. | The safety policy separates drafting and proposing from publishing, contacting, paying, submitting, or changing external systems. | Explicit human approval is required before external action, workflow/permission changes, publishing, or destructive commands. | Reviewable drafts and pull requests; no autonomous bids, invoices, emails, payments, portal actions, or production changes. | [Agent safety boundaries](docs/AGENT_SAFETY_BOUNDARIES.md) and [Security Policy](SECURITY.md) |
 
-## 2. What This Repo Is Not
+## Public-Safe Boundary
 
-| Not included | Reason |
-|---|---|
-| Private BranchBot v1.0 operational files | Lives in private infrastructure |
-| Real client data or contracts | Confidential — never committed here |
-| Internal contract lifecycle engine internals | Proprietary — kept separate |
-| Credentials, secrets, or API keys | Must never appear in any commit |
-| Production deployment configurations | Managed outside this repo |
+Included:
 
----
+- synthetic prompts and examples;
+- repository-level agent instructions;
+- a least-privilege safety workflow;
+- a small Node.js site used as a public proof index;
+- reviewable documentation of authorization gates.
 
-## 3. Safe Public Demo Rules
+Excluded:
 
-1. **No secrets.** Never commit API keys, tokens, passwords, or connection strings. Use environment variables or a secrets manager.
-2. **No client data.** All examples and sample data must be fully synthetic.
-3. **No private paths.** Do not reference internal file paths, service URLs, or internal tooling names.
-4. **Sanitize before committing.** Any content adapted from real workflows must be stripped of identifying details before it lands in this repo.
-5. **Label demos clearly.** Mark all example files as `[DEMO]` or `[SAMPLE]` so intent is unambiguous.
+- client, contract, bid, proposal, financial, VA, health, CUI, or private FCI data;
+- credentials, secrets, private paths, internal service URLs, and production configuration;
+- proprietary BranchOS production internals or confidential partner information;
+- claims of certification, attestation, production deployment, or autonomous authority.
 
----
+## Review the Controls
 
-## 4. Suggested Agent Workflows
+- Start with [Agent Safety Boundaries](docs/AGENT_SAFETY_BOUNDARIES.md).
+- Inspect [Public Safety Checks](.github/workflows/public-safety.yml) and its [run history](https://github.com/abranch43/branchbot-agent-lab/actions).
+- Review [Copilot Agent Prompt Patterns](docs/COPILOT_AGENT_PROMPTS.md) and [repository instructions](.github/copilot-instructions.md).
+- Run `npm test` locally to verify the public proof path and repository metadata.
 
-### Copilot Coding Agent Tasks
-- Auto-generate boilerplate files from a template prompt
-- Refactor and document existing code on demand
-- Draft and update markdown documentation
-- Create sanitized test fixtures from a schema description
+## Local Verification
 
-### GitHub Actions Automation
-- Lint and format on pull request
-- Auto-label issues by keyword
-- Post Copilot-generated summaries on merged PRs
-- Deploy updated static site to Azure on push to `main`
+```bash
+npm test
+node --check server.js
+```
 
-### Prompt Engineering Experiments
-- Test different system prompt structures in `docs/COPILOT_AGENT_PROMPTS.md`
-- Iterate on task decomposition strategies
-- Explore multi-step agent workflows using GitHub Issues as task queues
+## Commercial Contact
 
----
-
-## 5. How to Use Copilot Agents in This Repo
-
-1. **Assign issues to Copilot** — Open or select an issue, then assign it to `@copilot` to trigger an agent coding session.
-2. **Use `@copilot` in PR comments** — Ask Copilot to explain, fix, or extend code directly in pull request review threads.
-3. **Reference `docs/COPILOT_AGENT_PROMPTS.md`** — Reusable prompt patterns are maintained there for consistency.
-4. **Follow `.github/copilot-instructions.md`** — Repository-level instructions that shape how the Copilot agent behaves in this workspace.
-
----
-
-## 6. Next Steps
-
-- [ ] Add example GitHub Actions workflow for automated linting
-- [ ] Expand `docs/AGENT_LAB_OVERVIEW.md` with completed experiment notes
-- [ ] Add a `/demos` directory with sanitized agent output samples
-- [ ] Document agent task decomposition patterns in `docs/COPILOT_AGENT_PROMPTS.md`
-- [ ] Publish a blog post summarizing lessons from this lab
-
----
-
-*This repository is maintained as an open, public resource. Contributions and feedback are welcome.*
+For capability review, teaming, or service inquiries, use the [official A+ Enterprise website](https://aplus-enterprise.com). GitHub remains the public technical-proof layer.

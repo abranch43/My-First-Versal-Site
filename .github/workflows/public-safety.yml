@@ -20,7 +20,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          patterns='(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9_-]{20,}|C:\\Users\\|/Users/[^/]+/|password[[:space:]]*[:=][[:space:]]*[^<][^ ]+)'
+          patterns='(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9_]{20,}|sk-(proj-)?[A-Za-z0-9_-]{20,}|sk_live_[A-Za-z0-9]{16,}|hooks\.slack\.com/services/|postgres(ql)?://[^[:space:]]+|mysql://[^[:space:]]+|C:\\Users\\|/Users/[^/]+/|password[[:space:]]*[:=][[:space:]]*[^<][^ ]+)'
           if grep -RInE --exclude-dir=.git --exclude='*.lock' --exclude='public-safety.yml' "$patterns" .; then
             echo 'Potential secret or private-path pattern detected. Review and sanitize before merge.'
             exit 1
@@ -38,3 +38,6 @@ jobs:
               fi
             done < <(find demos -type f -print0)
           fi
+
+      - name: Verify public proof
+        run: npm test
