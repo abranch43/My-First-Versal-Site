@@ -1,12 +1,13 @@
 {
-  "name": "my-first-versal-site",
+  "name": "branchbot-agent-lab",
   "version": "1.0.0",
   "private": true,
-  "description": "Simple starter site for Azure App Service",
+  "description": "Public-safe agentic workflow proof for Antonio Branch and A+ Enterprise LLC",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "echo \"No build step needed\""
+    "build": "node --check server.js",
+    "test": "node --test test/public-proof.test.js"
   },
   "dependencies": {
     "express": "^4.19.2"
